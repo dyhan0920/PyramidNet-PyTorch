@@ -2,7 +2,7 @@
 
 This repository contains a [PyTorch](http://pytorch.org/) implementation for the paper: [Deep Pyramidal Residual Networks](https://arxiv.org/pdf/1610.02915.pdf) (Dongyoon Han*, Jiwhan Kim*, and Junmo Kim, CVPR 2017, (equally contributed by the authors*)). The code in this repository is based on the example provided in [PyTorch examples](https://github.com/pytorch/examples/tree/master/imagenet) and the nice implementation of [Densely Connected Convolutional Networks](https://github.com/andreasveit/densenet-pytorch).
 
-Two other implementations with [LuaTorch](http://torch.ch/) and [Caffe](http://caffe.berkeleyvision.org/) implemented by [Jiwhan Kim](https://github.com/jhkim89) are provided:
+Two other implementations with [LuaTorch](http://torch.ch/) and [Caffe](http://caffe.berkeleyvision.org/) are provided:
 1. [A LuaTorch implementation](https://github.com/jhkim89/PyramidNet) for PyramidNets,
 2. [A Caffe implementation](https://github.com/jhkim89/PyramidNet-caffe) for PyramidNets.
 
