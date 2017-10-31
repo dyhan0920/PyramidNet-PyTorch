@@ -22,7 +22,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --alpha 48 --depth 164 --batchsize 
 3. To use multi-GPU, data parallelism in PyTorch should be applied (i.e., model = torch.nn.DataParallel(model).cuda()).  
 
 ### Tracking training progress with TensorBoard
-Thanks to the [implementation](https://github.com/andreasveit/densenet-pytorch), which support the [TensorBoard](https://www.tensorflow.org/get_started/summaries_and_tensorboard) to track training progress efficiently, all experiments with PyTorch in TensorBoard can be tracked with [tensorboard_logger](https://github.com/TeamHG-Memex/tensorboard_logger) 
+Thanks to the [implementation](https://github.com/andreasveit/densenet-pytorch), which support the [TensorBoard](https://www.tensorflow.org/get_started/summaries_and_tensorboard) to track training progress efficiently, all the experiments can be tracked with [tensorboard_logger](https://github.com/TeamHG-Memex/tensorboard_logger).
 
 Tensorboard_logger can be installed with 
 ```
