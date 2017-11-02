@@ -9,7 +9,7 @@ Two other implementations with [LuaTorch](http://torch.ch/) and [Caffe](http://c
 ## Usage examples
 To train additive PyramidNet-110 (alpha=48 without bottleneck) on CIFAR-10 dataset with single-GPU:
 ```
-CUDA_VISIBLE_DEVICES=0 python train.py --alpha 64 --depth 110 --no-bottleneck --batchsize 128 --print-freq 1 --expname PyramidNet-164 --dataset cifar10
+CUDA_VISIBLE_DEVICES=0 python train.py --alpha 64 --depth 110 --no-bottleneck --batchsize 32 --print-freq 1 --expname PyramidNet-110 --dataset cifar10
 ```
 To train additive PyramidNet-164 (alpha=48 with bottleneck) on CIFAR-100 dataset with 4 GPU:
 ```
