@@ -108,16 +108,16 @@ class Bottleneck(nn.Module):
 
 
 class PyramidNet(nn.Module):
-
+        
     def __init__(self, depth, alpha, num_classes, bottleneck=False):
         super(PyramidNet, self).__init__()   	
         self.inplanes = 16
 
-        n = (depth - 2) /6
         if bottleneck == True:
-            n = n * 2 / 3
+            n = (depth - 2) / 9
             block = Bottleneck
         else:
+            n = (depth - 2) / 6
             block = BasicBlock
             
         self.addrate = alpha / (3*n*1.0)
