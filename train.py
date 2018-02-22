@@ -114,10 +114,6 @@ def main():
     
     print('Number of model parameters: {}'.format(sum([p.data.nelement() for p in model.parameters()])))
     
-    # for training on multiple GPUs. 
-    # Use CUDA_VISIBLE_DEVICES=0,1 to specify which GPUs to use
-    #model = torch.nn.DataParallel(model).cuda()
-    model = model.cuda()
 
     # optionally resume from a checkpoint
     if args.resume:
@@ -131,6 +127,12 @@ def main():
                   .format(args.resume, checkpoint['epoch']))
         else:
             print("=> no checkpoint found at '{}'".format(args.resume))
+
+            
+    # for training on multiple GPUs. 
+    # Use CUDA_VISIBLE_DEVICES=0,1 to specify which GPUs to use
+    #model = torch.nn.DataParallel(model).cuda()
+    model = model.cuda()
 
     print(model)
 
