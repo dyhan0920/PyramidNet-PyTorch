@@ -43,7 +43,7 @@ class BasicBlock(nn.Module):
 
 
 class Bottleneck(nn.Module):
-    expansion = 16
+    expansion = 4
 
     def __init__(self, inplanes, planes, stride=1, downsample=None, option=False):
         super(Bottleneck, self).__init__()
@@ -86,11 +86,12 @@ class ResNet(nn.Module):
         super(ResNet, self).__init__()        
         self.inplanes = 16
 
-        n = (depth - 2) /6
+        
         if bottleneck== True:
-            n = n * 2 / 3
+            n = (depth - 2) /9
             block = Bottleneck
         else:
+            n = (depth - 2) /6
             block = BasicBlock
 
         self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1,bias=False)
