@@ -55,6 +55,7 @@ Deep convolutional neural networks (DCNNs) have shown remarkable performance in 
 ![image](https://user-images.githubusercontent.com/31481676/32329781-5d47ff90-c021-11e7-81ed-ffac05e8ea98.png)
 
 ## Updates
+1. Some minor bugs are fixed [2018/2/22]
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
