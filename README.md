@@ -69,7 +69,7 @@ Please cite our paper if PyramidNets are used:
 @article{DPRN,
   title={Deep pyramidal residual networks},
   author={Han, Dongyoon and Kim, Jiwhan and Kim, Junmo},
-  journal={CVPR},
+  journal={IEEE CVPR},
   year={2017}
 }
 ```
