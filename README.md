@@ -61,7 +61,7 @@ Deep convolutional neural networks (DCNNs) have shown remarkable performance in 
 ## Updates
 1. Some minor bugs are fixed (2018/02/22)
 2. train.py is updated (including ImagNet-1k training code) (2018/04/06).
-3. Pre-ResNet architecture is uploaded.
+3. preresnet.py (Pre-ResNet architecture) is uploaded.
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
