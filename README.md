@@ -7,20 +7,25 @@ Two other implementations with [LuaTorch](http://torch.ch/) and [Caffe](http://c
 2. [A Caffe implementation](https://github.com/jhkim89/PyramidNet-caffe) for PyramidNets.
 
 ## Usage examples
-To train additive PyramidNet-110 (alpha=48 without bottleneck) on CIFAR-10 dataset with single-GPU:
+To train additive PyramidNet-200 (alpha=300 with bottleneck) on ImageNet-1k dataset with 8 GPUs:
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py ~/dataset/ILSVRC/Data/CLS-LOC/ --nettype pyramidnet --lr 0.05 --b 128 --depth 200 -j 16 --alpha 300 --print-freq 1 --expname PyramidNet-200 --dataset imagenet
+```
+To train additive PyramidNet-110 (alpha=48 without bottleneck) on CIFAR-10 dataset with a single-GPU:
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py --alpha 64 --depth 110 --no-bottleneck --batchsize 32 --lr 0.025 --print-freq 1 --expname PyramidNet-110 --dataset cifar10
 ```
-To train additive PyramidNet-164 (alpha=48 with bottleneck) on CIFAR-100 dataset with 4 GPU:
+To train additive PyramidNet-164 (alpha=48 with bottleneck) on CIFAR-100 dataset with 4 GPUs:
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --alpha 48 --depth 164 --batchsize 128 --lr 0.5 --print-freq 1 --expname PyramidNet-164 --dataset cifar100
 ```
 
 ### Notes
-1. This implementation is for CIFAR-10 and CIFAR-100 datasets with add-PyramidNet architecture, and the code will be updated for Imagenet-1k dataset soon. 
+1. This implementation contains the training (+test) code for add-PyramidNet architecture on ImageNet-1k dataset, CIFAR-10 and CIFAR-100 datasets.
 2. The traditional data augmentation for CIFAR datasets are used by following [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
-3. To use multi-GPU, data parallelism in PyTorch should be applied [i.e., model = torch.nn.DataParallel(model).cuda()].  
-4. An example code for ResNet is also included (an example code for pre-ResNet will be uploded soon).
+3. To use multi-GPU, data parallelism in PyTorch should be applied [i.e., model = torch.nn.DataParallel(model).cuda()]. 
+4. The example codes for ResNet and Pre-ResNet are also included.  
+5. For efficient training on ImageNet-1k dataset, Intel MKL and NVIDIA(nccl) are prerequistes. Please check the [official PyTorch github](https://github.com/pytorch/pytorch) for the installation.
 
 ### Tracking training progress with TensorBoard
 Thanks to the [implementation](https://github.com/andreasveit/densenet-pytorch), which support the [TensorBoard](https://www.tensorflow.org/get_started/summaries_and_tensorboard) to track training progress efficiently, all the experiments can be tracked with [tensorboard_logger](https://github.com/TeamHG-Memex/tensorboard_logger).
@@ -55,7 +60,9 @@ Deep convolutional neural networks (DCNNs) have shown remarkable performance in 
 ![image](https://user-images.githubusercontent.com/31481676/32329781-5d47ff90-c021-11e7-81ed-ffac05e8ea98.png)
 
 ## Updates
-1. Some minor bugs are fixed (2018/2/22)
+1. Some minor bugs are fixed (2018/02/22)
+2. train.py is updated (including ImagNet-1k training code) (2018/04/06).
+3. Pre-ResNet architecture is uploaded.
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
@@ -63,11 +70,11 @@ Please cite our paper if PyramidNets are used:
 @article{DPRN,
   title={Deep pyramidal residual networks},
   author={Han, Dongyoon and Kim, Jiwhan and Kim, Junmo},
-  journal={arXiv preprint arXiv:1610.02915},
-  year={2016}
+  journal={CVPR},
+  year={2017}
 }
 ```
-If this implementation is useful, please also cite or acknowledge this repository on your work.
+If this implementation is useful, please cite or acknowledge this repository on your work.
 
 ## Contact
 Dongyoon Han (dyhan@kaist.ac.kr),
