@@ -22,10 +22,9 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --alpha 48 --depth 164 --batchsize 
 
 ### Notes
 1. This implementation contains the training (+test) code for add-PyramidNet architecture on ImageNet-1k dataset, CIFAR-10 and CIFAR-100 datasets.
-2. The traditional data augmentation for CIFAR datasets are used by following [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
-3. To use multi-GPU, data parallelism in PyTorch should be applied [i.e., model = torch.nn.DataParallel(model).cuda()]. 
-4. The example codes for ResNet and Pre-ResNet are also included.  
-5. For efficient training on ImageNet-1k dataset, Intel MKL and NVIDIA(nccl) are prerequistes. Please check the [official PyTorch github](https://github.com/pytorch/pytorch) for the installation.
+2. The traditional data augmentation for ImageNet and CIFAR datasets are used by following [fb.resnet.torch](https://github.com/facebook/fb.resnet.torch).
+3. The example codes for ResNet and Pre-ResNet are also included.  
+4. For efficient training on ImageNet-1k dataset, Intel MKL and NVIDIA(nccl) are prerequistes. Please check the [official PyTorch github](https://github.com/pytorch/pytorch) for the installation.
 
 ### Tracking training progress with TensorBoard
 Thanks to the [implementation](https://github.com/andreasveit/densenet-pytorch), which support the [TensorBoard](https://www.tensorflow.org/get_started/summaries_and_tensorboard) to track training progress efficiently, all the experiments can be tracked with [tensorboard_logger](https://github.com/TeamHG-Memex/tensorboard_logger).
