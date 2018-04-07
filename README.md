@@ -9,15 +9,15 @@ Two other implementations with [LuaTorch](http://torch.ch/) and [Caffe](http://c
 ## Usage examples
 To train additive PyramidNet-200 (alpha=300 with bottleneck) on ImageNet-1k dataset with 8 GPUs:
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py ~/dataset/ILSVRC/Data/CLS-LOC/ --nettype pyramidnet --lr 0.05 --b 128 --depth 200 -j 16 --alpha 300 --print-freq 1 --expname PyramidNet-200 --dataset imagenet
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py ~/dataset/ILSVRC/Data/CLS-LOC/ --nettype pyramidnet --lr 0.05 --b 128 --depth 200 -j 16 --alpha 300 --print-freq 1 --expname PyramidNet-200 --dataset imagenet --epochs 100
 ```
 To train additive PyramidNet-110 (alpha=48 without bottleneck) on CIFAR-10 dataset with a single-GPU:
 ```
-CUDA_VISIBLE_DEVICES=0 python train.py --alpha 64 --depth 110 --no-bottleneck --batchsize 32 --lr 0.025 --print-freq 1 --expname PyramidNet-110 --dataset cifar10
+CUDA_VISIBLE_DEVICES=0 python train.py --alpha 64 --depth 110 --no-bottleneck --batchsize 32 --lr 0.025 --print-freq 1 --expname PyramidNet-110 --dataset cifar10 --epochs 300
 ```
 To train additive PyramidNet-164 (alpha=48 with bottleneck) on CIFAR-100 dataset with 4 GPUs:
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --alpha 48 --depth 164 --batchsize 128 --lr 0.5 --print-freq 1 --expname PyramidNet-164 --dataset cifar100
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --alpha 48 --depth 164 --batchsize 128 --lr 0.5 --print-freq 1 --expname PyramidNet-164 --dataset cifar100 --epochs 300
 ```
 
 ### Notes
@@ -60,8 +60,9 @@ Deep convolutional neural networks (DCNNs) have shown remarkable performance in 
 
 ## Updates
 1. Some minor bugs are fixed (2018/02/22)
-2. train.py is updated (including ImagNet-1k training code) (2018/04/06).
-3. preresnet.py (Pre-ResNet architecture) is uploaded.
+2. train.py is updated (including ImagNet-1k training code) (2018/04/06)
+3. resnet.py and PyramidNet.py are updated (2018/04/06)
+4. preresnet.py (Pre-ResNet architecture) is uploaded (2018/04/06).
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
