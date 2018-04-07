@@ -307,7 +307,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
                   'Top 5-err {top5.val:.4f} ({top5.avg:.4f})'.format(
                    epoch, args.epochs, i, len(train_loader), LR=current_LR, batch_time=batch_time,
                    data_time=data_time, loss=losses, top1=top1, top5=top5))
-        break
+            
     # log to TensorBoard
     if args.tensorboard:
         log_value('train_loss', losses.avg, epoch)
