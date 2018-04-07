@@ -38,16 +38,12 @@ pip install tensorboard_logger
 ### Abstract
 Deep convolutional neural networks (DCNNs) have shown remarkable performance in image classification tasks in recent years. Generally, deep neural network architectures are stacks consisting of a large number of convolution layers, and they perform downsampling along the spatial dimension via pooling to reduce memory usage. At the same time, the feature map dimension (i.e., the number of channels) is sharply increased at downsampling locations, which is essential to ensure effective performance because it increases the capability of high-level attributes. Moreover, this also applies to residual networks and is very closely related to their performance. In this research, instead of using downsampling to achieve a sharp increase at each residual unit, we gradually increase the feature map dimension at all the units to involve as many locations as possible. This is discussed in depth together with our new insights as it has proven to be an effective design to improve the generalization ability. Furthermore, we propose a novel residual unit capable of further improving the classification accuracy with our new network architecture. Experiments on benchmark CIFAR datasets have shown that our network architecture has a superior generalization ability compared to the original residual networks.
 
-### Network architecture details
-1. Schematic illustration of comparision of several units: (a) basic residual units, (b) bottleneck, (c) wide residual units, and (d) our pyramidal residual units, and (e) our pyramidal bottleneck residual units:
+### Schematic Illustration 
+We provide a simple schematic illustration to compare the several network architectures, which have (a) basic residual units, (b) bottleneck, (c) wide residual units, and (d) our pyramidal residual units, and (e) our pyramidal bottleneck residual units, as follows:
 
 ![image](https://user-images.githubusercontent.com/31481676/32218603-c9e136bc-be6e-11e7-94ee-aa31c5887fdd.png)
 
-2. Visual illustration of (a) additive PyramidNet (the feature map dimension of each unit increases linearly), (b) multiplicative PyramidNet (the feature map dimension of each unit increases geometrically), and (c) comparison of (a) and (b):
-
-![image](https://user-images.githubusercontent.com/31481676/32218836-8f4b667a-be6f-11e7-9410-0619cfe0d0e2.png)
-
-### Results
+### Experimental Results
 1. The results are readily reproduced, which show the same performances as those reproduced with [A LuaTorch implementation](https://github.com/jhkim89/PyramidNet) for PyramidNets.
 
 2. Comparison of the state-of-the-art networks by [Top-1 Test Error Rates VS # of Parameters]:
