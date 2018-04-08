@@ -17,7 +17,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py --net_type pyramidnet --alpha 64 --depth 
 ```
 To train additive PyramidNet-164 (alpha=48 with bottleneck) on CIFAR-100 dataset with 4 GPUs:
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --net_type pyramidnet--alpha 48 --depth 164 --batch_size 128 --lr 0.5 --print-freq 1 --expname PyramidNet-164 --dataset cifar100 --epochs 300
+CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py --net_type pyramidnet --alpha 48 --depth 164 --batch_size 128 --lr 0.5 --print-freq 1 --expname PyramidNet-164 --dataset cifar100 --epochs 300
 ```
 
 ### Notes
