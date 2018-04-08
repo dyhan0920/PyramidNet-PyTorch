@@ -112,22 +112,22 @@ def main():
             normalize
             ])
 
-        kwargs = {'num_workers': 1, 'pin_memory': True}
+#kwargs = {'num_workers': 1, 'pin_memory': True}i
         if args.dataset == 'cifar100':
             train_loader = torch.utils.data.DataLoader(
                 datasets.CIFAR100('../data', train=True, download=True, transform=transform_train),
-                batch_size=args.batch_size, shuffle=True, **kwargs)
+                batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
             val_loader = torch.utils.data.DataLoader(
                 datasets.CIFAR100('../data', train=False, transform=transform_test),
-                batch_size=args.batch_size, shuffle=True, **kwargs)        
+                batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True) 
             numberofclass = 100         
         elif args.dataset == 'cifar10':
             train_loader = torch.utils.data.DataLoader(
                 datasets.CIFAR10('../data', train=True, download=True, transform=transform_train),
-                batch_size=args.batch_size, shuffle=True, **kwargs)
+                batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
             val_loader = torch.utils.data.DataLoader(
                 datasets.CIFAR10('../data', train=False, transform=transform_test),
-                batch_size=args.batch_size, shuffle=True, **kwargs)
+                batch_size=args.batch_size, shuffle=True, num_workers=args.workers, pin_memory=True)
             numberofclass = 10
         else: 
             raise Exception ('unknown dataset: {}'.format(args.dataset)) 
@@ -246,7 +246,7 @@ def main():
         best_err1 = min(err1, best_err1)
         if is_best:
             best_err5 = err5
-        print ('Current best accuracy (top-1 and 5 error):', best_err1, best_err5)    
+        print ('Current best accuracy (top-1 and 5 error):', best_err1, best_err5)
         save_checkpoint({
             'epoch': epoch,
             'arch': args.nettype,
@@ -307,7 +307,6 @@ def train(train_loader, model, criterion, optimizer, epoch):
                   'Top 5-err {top5.val:.4f} ({top5.avg:.4f})'.format(
                    epoch, args.epochs, i, len(train_loader), LR=current_LR, batch_time=batch_time,
                    data_time=data_time, loss=losses, top1=top1, top5=top5))
-            
     # log to TensorBoard
     if args.tensorboard:
         log_value('train_loss', losses.avg, epoch)
@@ -325,8 +324,19 @@ def validate(val_loader, model, criterion, epoch):
     end = time.time()
     for i, (input, target) in enumerate(val_loader):
         target = target.cuda(async=True)
+
+        # for PyTorch 0.3.x, use volatile=True for preventing memory leakage:
         input_var = torch.autograd.Variable(input, volatile=True)
         target_var = torch.autograd.Variable(target, volatile=True)
+        output = model(input_var)
+        loss = criterion(output, target_var)
+
+        # for PyTorch 0.4.x, volatile=True is replaced by with torch.no.grad(), so uncomment the followings:
+        # with torch.no_grad():
+        #     input_var = torch.autograd.Variable(input)
+        #     target_var = torch.autograd.Variable(target)
+        #     output = model(input_var)
+        #     loss = criterion(output, target_var)
 
         # compute output
         output = model(input_var)
@@ -342,7 +352,7 @@ def validate(val_loader, model, criterion, epoch):
         batch_time.update(time.time() - end)
         end = time.time()
 
-        if i % args.print_freq == 0:
+        if i % args.print_freq == 0 and args.verbose == True:
             print('Test (on val set): [{0}/{1}][{2}/{3}]\t'
                   'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'
