@@ -170,26 +170,26 @@ def main():
         raise Exception ('unknown dataset: {}'.format(args.dataset)) 
 
     if args.pretrained:
-        print("=> using pre-trained model '{}'".format(args.nettype))
+        print("=> using pre-trained model '{}'".format(args.net_type))
         try:
-            model = models.__dict__[str(args.nettype)](pretrained=True)
+            model = models.__dict__[str(args.net_type)](pretrained=True)
         except (KeyError, TypeError):
             print('unknown model')
             print('torchvision provides the follwoing pretrained model:', model_names)
             return
     else:
-        print("=> creating model '{}'".format(args.nettype))
-        if args.nettype == 'resnet':
+        print("=> creating model '{}'".format(args.net_type))
+        if args.net_type == 'resnet':
             model = RN.ResNet(args.dataset, args.depth, numberofclass, args.bottleneck) # for ResNet  
-        elif args.nettype == 'preresnet':
+        elif args.net_type == 'preresnet':
             model = PRN.PreResNet(args.dataset, args.depth, numberofclass, args.bottleneck) # for Pre-activation ResNet  
-        elif args.nettype == 'pyramidnet':
+        elif args.net_type == 'pyramidnet':
             model = PYRM.PyramidNet(args.dataset, args.depth, args.alpha, numberofclass, args.bottleneck) # for ResNet  
         else:
-            raise Exception ('unknown network architecture: {}'.format(args.nettype)) 
+            raise Exception ('unknown network architecture: {}'.format(args.net_type)) 
 
     if not args.distributed:
-        if args.nettype.startswith('alexnet') or args.nettype.startswith('vgg'):
+        if args.net_type.startswith('alexnet') or args.net_type.startswith('vgg'):
             model.features = torch.nn.DataParallel(model.features)
             model.cuda()
         else:
@@ -248,7 +248,7 @@ def main():
         print ('Current best accuracy (top-1 and 5 error):', best_err1, best_err5)
         save_checkpoint({
             'epoch': epoch,
-            'arch': args.nettype,
+            'arch': args.net_type,
             'state_dict': model.state_dict(),
             'best_err1': best_err1,
             'best_err5': best_err5,
