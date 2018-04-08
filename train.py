@@ -26,9 +26,9 @@ model_names = sorted(name for name in models.__dict__
 
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR-10, CIFAR-100 and ImageNet-1k Training')
-parser.add_argument('data', metavar='DIR',
+parser.add_argument('--data', metavar='DIR',
                     help='path to dataset')
-parser.add_argument('--nettype', default='PyramidNet', type=str,
+parser.add_argument('--net_type', default='PyramidNet', type=str,
                     help='networktype: resnet, resnext, densenet, pyamidnet, and so on')
 parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
@@ -112,7 +112,6 @@ def main():
             normalize
             ])
 
-#kwargs = {'num_workers': 1, 'pin_memory': True}i
         if args.dataset == 'cifar100':
             train_loader = torch.utils.data.DataLoader(
                 datasets.CIFAR100('../data', train=True, download=True, transform=transform_train),
@@ -325,7 +324,7 @@ def validate(val_loader, model, criterion, epoch):
     for i, (input, target) in enumerate(val_loader):
         target = target.cuda(async=True)
 
-        # for PyTorch 0.3.x, use volatile=True for preventing memory leakage:
+        # for PyTorch 0.3.x, use volatile=True for preventing memory leakage in evaluation phase:`
         input_var = torch.autograd.Variable(input, volatile=True)
         target_var = torch.autograd.Variable(target, volatile=True)
         output = model(input_var)
