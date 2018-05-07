@@ -59,6 +59,7 @@ We provide a simple schematic illustration to compare the several network archit
 2. train.py is updated (including ImagNet-1k training code) (2018/04/06)
 3. resnet.py and PyramidNet.py are updated (2018/04/06)
 4. preresnet.py (Pre-ResNet architecture) is uploaded (2018/04/06).
+5. The pretrained models will be uploaded soon!!
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
