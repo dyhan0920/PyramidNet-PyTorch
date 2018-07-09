@@ -60,7 +60,7 @@ We provide a simple schematic illustration to compare the several network archit
 | Network Type | Alpha |  # of Params |  Top-1 err(%) | Top-5 err(%) | Model File|
 | :-------------: | :-------------: |  :-------------: |:-------------: |:-------------: | :----------:|
 | ResNet-101 (Caffe model) | - | 44.7M | 23.6 | 7.1 | [Original Model](https://github.com/KaimingHe/deep-residual-networks) |
-| ResNet-101 (Luatorch model) |  - | 44.7M | 22.4 | 6.21 | [Original Model](https://github.com/facebook/fb.resnet.torch/tree/master/pretrained) |
+| ResNet-101 (Luatorch model) |  - | 44.7M | 22.44 | 6.21 | [Original Model](https://github.com/facebook/fb.resnet.torch/tree/master/pretrained) |
 | PyramidNet-v1-101 | 360 | 42.5M | 21.98 | 6.20 | [Download](https://drive.google.com/file/d/1HLQz9yBF3lHmarKu9yq2NARxnEbxUhZj/view?usp=sharing) |
 * It is worthwile to note that the above widely-used ResNet-101 (Caffe model) is trained with the images, where the pixel intensities are in [0,255] and are centered by the mean image, our PyramidNet-101 is trained with the images where the pixel values are standardized.
 
