@@ -55,7 +55,7 @@ We provide a simple schematic illustration to compare the several network archit
 ![image](https://user-images.githubusercontent.com/31481676/32329781-5d47ff90-c021-11e7-81ed-ffac05e8ea98.png)
 
 ### ImageNet Pretrained Models 
-* PyramidNet-101-360 is trained using PyTorch (single-crop (224x224) validation error rates are reported):
+* A pretrained model of PyramidNet-101-360 is trained from scratch using the code in this repository (single-crop (224x224) validation error rates are reported):
 
 | Network Type | Alpha |  # of Params |  Top-1 err(%) | Top-5 err(%) | Model File|
 | :-------------: | :-------------: |  :-------------: |:-------------: |:-------------: | :----------:|
@@ -69,7 +69,7 @@ We provide a simple schematic illustration to compare the several network archit
 2. train.py is updated (including ImagNet-1k training code) (2018/04/06).
 3. resnet.py and PyramidNet.py are updated (2018/04/06).
 4. preresnet.py (Pre-ResNet architecture) is uploaded (2018/04/06).
-5. A pretrained model using PyTorch is just uploaded (2018/07/09).
+5. A pretrained model using PyTorch is uploaded (2018/07/09).
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
