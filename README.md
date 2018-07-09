@@ -54,12 +54,22 @@ We provide a simple schematic illustration to compare the several network archit
 
 ![image](https://user-images.githubusercontent.com/31481676/32329781-5d47ff90-c021-11e7-81ed-ffac05e8ea98.png)
 
+### ImageNet Pretrained Models 
+* PyramidNet-101-360 is trained using PyTorch (single-crop (224x224) validation error rates are reported):
+
+| Network Type | Alpha |  # of Params |  Top-1 err(%) | Top-5 err(%) | Model File|
+| :-------------: | :-------------: |  :-------------: |:-------------: |:-------------: | :----------:|
+| ResNet-101 (Caffe model) | - | 44.7M | 23.6 | 7.1 | [Original Model](https://github.com/KaimingHe/deep-residual-networks) |
+| ResNet-101 (Luatorch model) |  - | 44.7M | 22.4 | 6.21 | [Original Model](https://github.com/facebook/fb.resnet.torch/tree/master/pretrained) |
+| PyramidNet-v1-101 | 360 | 42.5M | 21.98 | 6.20 | [Download](https://drive.google.com/file/d/1HLQz9yBF3lHmarKu9yq2NARxnEbxUhZj/view?usp=sharing) |
+* It is worthwile to note that the above widely-used ResNet-101 (Caffe model) is trained with the images, where the pixel intensities are in [0,255] and are centered by the mean image, our PyramidNet-101 is trained with the images where the pixel values are standardized.
+
 ## Updates
-1. Some minor bugs are fixed (2018/02/22)
-2. train.py is updated (including ImagNet-1k training code) (2018/04/06)
-3. resnet.py and PyramidNet.py are updated (2018/04/06)
+1. Some minor bugs are fixed (2018/02/22).
+2. train.py is updated (including ImagNet-1k training code) (2018/04/06).
+3. resnet.py and PyramidNet.py are updated (2018/04/06).
 4. preresnet.py (Pre-ResNet architecture) is uploaded (2018/04/06).
-5. The pretrained models will be uploaded soon!!
+5. A pretrained model using PyTorch is just uploaded (2018/07/09).
 
 ## Citation
 Please cite our paper if PyramidNets are used: 
