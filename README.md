@@ -63,7 +63,7 @@ We provide a simple schematic illustration to compare the several network archit
 | ResNet-101 (Luatorch model) |  - | 44.7M | 22.44 | 6.21 | [Original Model](https://github.com/facebook/fb.resnet.torch/tree/master/pretrained) |
 | PyramidNet-v1-101 | 360 | 42.5M | 21.98 | 6.20 | [Download](https://drive.google.com/file/d/1x4M8_SYTwb7Hbel1-C6rgHTl6tW0Vm8y/view?usp=sharing) |
 * Note that the above widely-used ResNet-101 (Caffe model) is trained with the images, where the pixel intensities are in [0,255] and are centered by the mean image, our PyramidNet-101 is trained with the images where the pixel values are standardized.
-* The model is trained with PyTorch-0.4 (the BatchNorm2d layer contains the key of num_batches_tracked). For the users using PyTorch ver (<=0.3), you can copy the weight to your model as follows:
+* The model is trained with PyTorch-0.4 (the BatchNorm2d layer contains the key of num_batches_tracked by track_running_stats). For the users using PyTorch ver (<=0.3), you can copy the weight to your model as follows:
   ````
   yourmodel.load_state_dict({k:v for k,v in loaded_model.items() if k in yourmodel.state_dict()
   ````
