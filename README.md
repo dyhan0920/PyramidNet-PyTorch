@@ -85,6 +85,6 @@ Please cite our paper if PyramidNets are used:
 If this implementation is useful, please cite or acknowledge this repository on your work.
 
 ## Contact
-Dongyoon Han (dyhan@kaist.ac.kr),
+Dongyoon Han (dongyoon.han@navercorp.com),
 Jiwhan Kim (jhkim89@kaist.ac.kr),
 Junmo Kim (junmo.kim@kaist.ac.kr)
