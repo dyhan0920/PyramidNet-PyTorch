@@ -283,7 +283,7 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
         # measure accuracy and record loss
         err1, err5 = accuracy(output.data, target, topk=(1, 5))
-        losses.update(loss.data[0], input.size(0))
+        losses.update(loss.data, input.size(0))
         top1.update(err1[0], input.size(0))
         top5.update(err5[0], input.size(0))
 
@@ -343,7 +343,7 @@ def validate(val_loader, model, criterion, epoch):
 
         # measure accuracy and record loss
         err1, err5 = accuracy(output.data, target, topk=(1, 5))
-        losses.update(loss.data[0], input.size(0))
+        losses.update(loss.data, input.size(0))
         top1.update(err1[0], input.size(0))
         top5.update(err5[0], input.size(0))
 
